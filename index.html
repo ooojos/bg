@@ -14,15 +14,12 @@
     --gold-light: #e8b84b;
     --red: #8b2020;
     --green: #2a6b2a;
-    --solved-bg: #d4edda;
     --bracket-bg: #fff8e6;
     --bracket-hover: #ffe8a0;
     --bracket-selected: #ffd54f;
     --shadow: rgba(0,0,0,0.15);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     background: var(--paper);
     color: var(--ink);
@@ -32,26 +29,17 @@
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 27px,
-        rgba(180,160,100,0.15) 27px,
-        rgba(180,160,100,0.15) 28px
-      );
+    background-image: repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(180,160,100,0.15) 27px,rgba(180,160,100,0.15) 28px);
   }
-
   .page-frame {
     width: 100%;
-    max-width: 860px;
+    max-width: 880px;
     background: var(--paper);
     border: 2px solid var(--gold);
     box-shadow: 4px 4px 0 var(--gold), 8px 8px 20px var(--shadow);
     padding: 40px 48px;
     position: relative;
   }
-
   .page-frame::before {
     content: '';
     position: absolute;
@@ -59,531 +47,320 @@
     border: 1px solid rgba(200,146,42,0.3);
     pointer-events: none;
   }
-
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: var(--gold);
-    text-align: center;
-    letter-spacing: 0.05em;
-    margin-bottom: 6px;
-  }
-
-  .subtitle {
-    text-align: center;
-    font-size: 0.82rem;
-    color: #8a7a5a;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 16px;
-  }
-
-  .instructions {
-    background: var(--paper-dark);
-    border-left: 3px solid var(--gold);
-    padding: 12px 16px;
-    font-size: 0.82rem;
-    line-height: 1.7;
-    color: #5a4a2a;
-    margin-bottom: 28px;
-  }
-
+  h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); text-align: center; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .subtitle { text-align: center; font-size: 0.82rem; color: #8a7a5a; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 32px; border-bottom: 1px solid var(--gold); padding-bottom: 16px; }
+  .instructions { background: var(--paper-dark); border-left: 3px solid var(--gold); padding: 12px 16px; font-size: 0.82rem; line-height: 1.7; color: #5a4a2a; margin-bottom: 28px; }
   .instructions strong { color: var(--ink); }
-
-  /* The puzzle display */
-  .puzzle-display {
-    background: white;
-    border: 1px solid #d4c090;
-    padding: 24px 28px;
-    font-size: 1.25rem;
-    line-height: 2.4;
-    letter-spacing: 0.02em;
-    margin-bottom: 28px;
-    word-break: break-word;
-    min-height: 80px;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.06);
-  }
-
-  .clue-bracket {
-    display: inline;
-    background: var(--bracket-bg);
-    border: 1.5px solid var(--gold);
-    border-radius: 3px;
-    padding: 1px 4px;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-    font-size: 0.92em;
-    color: #7a5500;
-    white-space: nowrap;
-  }
-
-  .clue-bracket:hover {
-    background: var(--bracket-hover);
-    transform: translateY(-1px);
-  }
-
-  .clue-bracket.selected {
-    background: var(--bracket-selected);
-    border-color: #c8922a;
-    box-shadow: 0 2px 8px rgba(200,146,42,0.35);
-  }
-
-  .solved-text {
-    color: var(--green);
-    font-weight: 700;
-    background: var(--solved-bg);
-    padding: 1px 4px;
-    border-radius: 2px;
-    border-bottom: 2px solid var(--green);
-  }
-
-  /* Answer panel */
-  .answer-panel {
-    border: 2px solid var(--gold);
-    background: var(--paper-dark);
-    padding: 20px 24px;
-    margin-bottom: 24px;
-    display: none;
-  }
-
+  .puzzle-display { background: white; border: 1px solid #d4c090; padding: 24px 28px; font-size: 1.1rem; line-height: 2.8; letter-spacing: 0.02em; margin-bottom: 28px; word-break: break-word; min-height: 80px; box-shadow: inset 0 1px 4px rgba(0,0,0,0.06); }
+  .clue-bracket { display: inline; background: var(--bracket-bg); border: 1.5px solid var(--gold); border-radius: 3px; padding: 1px 4px; cursor: pointer; transition: background 0.15s, transform 0.1s; font-size: 0.88em; color: #7a5500; }
+  .clue-bracket:hover { background: var(--bracket-hover); transform: translateY(-1px); }
+  .clue-bracket.selected { background: var(--bracket-selected); border-color: #c8922a; box-shadow: 0 2px 8px rgba(200,146,42,0.35); }
+  .clue-bracket.locked { opacity: 0.65; cursor: not-allowed; }
+  .solved-text { color: var(--green); font-weight: 700; background: #d4edda; padding: 1px 4px; border-radius: 2px; border-bottom: 2px solid var(--green); }
+  .answer-panel { border: 2px solid var(--gold); background: var(--paper-dark); padding: 20px 24px; margin-bottom: 24px; display: none; }
   .answer-panel.visible { display: block; }
-
-  .clue-label {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
-    font-style: italic;
-    color: #5a4020;
-    margin-bottom: 12px;
-    line-height: 1.5;
-  }
-
-  .clue-label strong {
-    font-style: normal;
-    font-weight: 700;
-    color: var(--ink);
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 2px;
-  }
-
-  .answer-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .answer-input {
-    flex: 1;
-    background: white;
-    border: 2px solid var(--gold);
-    padding: 10px 14px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 1rem;
-    color: var(--ink);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
+  .clue-label { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-style: italic; color: #5a4020; margin-bottom: 12px; line-height: 1.5; }
+  .clue-label strong { font-style: normal; font-weight: 700; color: var(--ink); display: block; font-size: 1rem; margin-bottom: 2px; }
+  .answer-row { display: flex; gap: 10px; align-items: center; }
+  .answer-input { flex: 1; background: white; border: 2px solid var(--gold); padding: 10px 14px; font-family: 'Courier Prime', monospace; font-size: 1rem; color: var(--ink); outline: none; transition: border-color 0.2s; }
   .answer-input:focus { border-color: var(--ink); }
-
-  .submit-btn {
-    background: var(--gold);
-    color: white;
-    border: none;
-    padding: 10px 22px;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: background 0.15s, transform 0.1s;
-  }
-
+  .submit-btn { background: var(--gold); color: white; border: none; padding: 10px 22px; font-family: 'Playfair Display', serif; font-size: 0.95rem; cursor: pointer; letter-spacing: 0.05em; transition: background 0.15s, transform 0.1s; }
   .submit-btn:hover { background: var(--ink); transform: translateY(-1px); }
-
-  .feedback {
-    margin-top: 10px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    min-height: 20px;
-    letter-spacing: 0.05em;
-  }
+  .feedback { margin-top: 10px; font-size: 0.88rem; font-weight: 700; min-height: 20px; letter-spacing: 0.05em; }
   .feedback.wrong { color: var(--red); }
   .feedback.right { color: var(--green); }
-
-  /* Progress */
-  .progress-bar-wrap {
-    height: 6px;
-    background: var(--paper-dark);
-    border: 1px solid #d4c090;
-    margin-bottom: 16px;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background: var(--green);
-    transition: width 0.4s ease;
-    width: 0%;
-  }
-
-  .stats {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.78rem;
-    color: #8a7a5a;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .victory {
-    display: none;
-    text-align: center;
-    padding: 24px;
-    background: var(--paper-dark);
-    border: 2px solid var(--green);
-  }
+  .progress-bar-wrap { height: 6px; background: var(--paper-dark); border: 1px solid #d4c090; margin-bottom: 16px; }
+  .progress-bar-fill { height: 100%; background: var(--green); transition: width 0.4s ease; width: 0%; }
+  .stats { display: flex; justify-content: space-between; font-size: 0.78rem; color: #8a7a5a; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px; }
+  .victory { display: none; text-align: center; padding: 28px; background: var(--paper-dark); border: 2px solid var(--green); }
   .victory.show { display: block; }
-  .victory h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: var(--green);
-    margin-bottom: 8px;
-  }
-  .victory p { color: #3a5a3a; font-size: 0.9rem; line-height: 1.8; }
-
-  .hint-toggle {
-    background: none;
-    border: 1px dashed var(--gold);
-    color: var(--gold);
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.78rem;
-    padding: 4px 10px;
-    cursor: pointer;
-    margin-left: 10px;
-    letter-spacing: 0.05em;
-  }
+  .victory h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--green); margin-bottom: 10px; }
+  .victory p { color: #3a5a3a; font-size: 0.9rem; line-height: 1.9; }
+  .hint-toggle { background: none; border: 1px dashed var(--gold); color: var(--gold); font-family: 'Courier Prime', monospace; font-size: 0.78rem; padding: 4px 10px; cursor: pointer; margin-left: 10px; letter-spacing: 0.05em; }
   .hint-toggle:hover { background: var(--bracket-bg); }
-
-  .hint-text {
-    display: none;
-    font-size: 0.8rem;
-    color: #8a6a2a;
-    font-style: italic;
-    margin-top: 8px;
-    padding: 6px 10px;
-    background: #fff8e6;
-    border-left: 2px solid var(--gold-light);
-  }
+  .hint-text { display: none; font-size: 0.8rem; color: #8a6a2a; font-style: italic; margin-top: 8px; padding: 6px 10px; background: #fff8e6; border-left: 2px solid var(--gold-light); }
   .hint-text.show { display: block; }
-
-  .depth-badge {
-    display: inline-block;
-    font-size: 0.62rem;
-    background: var(--gold);
-    color: white;
-    padding: 1px 5px;
-    border-radius: 2px;
-    vertical-align: super;
-    margin-left: 2px;
-    letter-spacing: 0.05em;
-  }
 </style>
 </head>
 <body>
-
 <div class="page-frame">
   <h1>The Bracket Puzzle</h1>
   <div class="subtitle">A cryptic substitution challenge</div>
-
   <div class="instructions">
-    <strong>How to play:</strong> The string below contains nested clues in <strong>[square brackets]</strong>.
-    Click any bracket to select it, then type your answer and press <em>Submit</em> (or Enter).
-    Solve inner brackets first — their answers unlock the outer clues!
-    All answers are <strong>case-insensitive</strong>.
+    <strong>How to play:</strong> Click any <strong>[bracket]</strong> to select its clue, then type your answer and press <em>Submit</em> or Enter.
+    Locked brackets (🔒) must have their inner clues solved first. Answers are <strong>case-insensitive</strong>.
   </div>
-
-  <div class="progress-bar-wrap">
-    <div class="progress-bar-fill" id="progressFill"></div>
-  </div>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
   <div class="stats">
     <span id="solvedCount">0 / 9 solved</span>
     <span id="mistakesCount">0 mistakes</span>
   </div>
-
   <div class="puzzle-display" id="puzzleDisplay"></div>
-
   <div class="answer-panel" id="answerPanel">
     <div class="clue-label" id="clueLabel"></div>
     <div class="answer-row">
-      <input type="text" class="answer-input" id="answerInput" placeholder="Your answer…" autocomplete="off" />
+      <input type="text" class="answer-input" id="answerInput" placeholder="Your answer…" autocomplete="off" spellcheck="false" />
       <button class="submit-btn" id="submitBtn">Submit</button>
       <button class="hint-toggle" id="hintToggle">Hint?</button>
     </div>
     <div class="hint-text" id="hintText"></div>
     <div class="feedback" id="feedback"></div>
   </div>
-
   <div class="victory" id="victory">
-    <h2>🎉 Puzzle Solved!</h2>
-    <p>The hidden message was always:<br><br>
-    <strong id="finalMessage"></strong></p>
+    <h2>🎉 Puzzle Complete!</h2>
+    <p>The message hidden inside all those brackets was always:<br><br>
+    <strong style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--green)">Happy Birthday Beans!!</strong></p>
   </div>
 </div>
 
 <script>
-// ─────────────────────────────────────────────────
-// CLUE DEFINITIONS
-// id: unique key
-// clue: the text shown inside brackets (may reference nested solved ids)
-// answer: correct answer (lowercase for comparison)
-// hint: optional nudge
-// depth: nesting level (innermost = 1)
-// dependsOn: ids that must be solved before clue text updates
-// ─────────────────────────────────────────────────
-const clues = [
+/*
+  SOLUTION MAP
+  ============
+  H [ app ] y  Birth [ day ]  [ beans ] !!
+
+  Chain 1 — H[app]y = "Happy"
+    [Type of chart]  →  BAR
+    Lionel BAR-t wrote O____!  →  O-LIVER-!  →  answer = LIVER
+    Yellow-green fluid from the LIVER  →  BILE
+    Mo-BILE Computer Program  →  APP  ← this slot = "app" → H-APP-y
+
+  Chain 2 — Birth[day]
+    [Historic Adelaide hotel]  →  AUSTRAL
+    AUSTRAL-ia / Columbus DAY / Mothers DAY  →  answer = DAY
+
+  Chain 3 — [beans]!!
+    [Driving ____ Daisy]  →  MISS
+    ___ Before Wicket: dis-MISS-al  →  LEG
+    LEG-ume: leguminous seed  →  BEANS
+*/
+
+const CLUES = [
+  // ── Chain 1 ──
   {
     id: 'chart',
-    clue: 'Type of chart',
     answer: 'bar',
-    hint: 'Think Bart Simpson without the t...',
-    depth: 1,
-    dependsOn: []
+    hint: 'A pub counter, a chocolate block, a legal profession — or this type of graph.',
+    deps: [],
+    getClue: () => 'Type of chart'
   },
   {
-    id: 'oliver',
-    // After 'chart' solved, clue shows "O____! - Play by Lionel Bart"
-    clue: () => clues.find(c=>c.id==='chart').solved
-      ? 'O____! — Play by Lionel Bart'
-      : 'O____! — Play by Lionel [Type of chart]t',
-    answer: 'oliver',
-    hint: '"Please sir, I want some more…"',
-    depth: 2,
-    dependsOn: ['chart']
+    id: 'liver',
+    answer: 'liver',
+    hint: '"Please sir, I want some more…" — the organ hiding inside the musical\'s title.',
+    deps: ['chart'],
+    getClue: () => isSolved('chart')
+      ? 'O____! — Musical by Lionel Bart'
+      : 'O____! — Musical by Lionel [Type of chart]t'
   },
   {
-    id: 'urine',
-    clue: () => {
-      const olv = clues.find(c=>c.id==='oliver');
-      return olv.solved
-        ? 'Yellow fluid produced by the body — Oliver! is a play by Lionel Bart'
-        : `Yellow fluid produced by the body — [O____! — Play by Lionel ${clues.find(c=>c.id==='chart').solved ? 'Bart' : '[Type of chart]t'}]`;
-    },
-    answer: 'urine',
-    hint: 'Liquid waste. Also known as "wee" — but the full word, please.',
-    depth: 3,
-    dependsOn: ['chart', 'oliver']
+    id: 'bile',
+    answer: 'bile',
+    hint: 'Bitter yellow-green fluid your liver makes — rhymes with "vile".',
+    deps: ['chart', 'liver'],
+    getClue: () => isSolved('liver')
+      ? 'Yellow-green digestive fluid produced by the liver'
+      : 'Yellow-green digestive fluid produced by the [O____! Musical by Lionel Bart]'
   },
   {
-    id: 'python',
-    clue: () => {
-      const u = clues.find(c=>c.id==='urine');
-      return u.solved
-        ? 'Mo___ — urine is a Computer Program'
-        : `Mo___ — [yellow fluid] Computer Program`;
-    },
-    answer: 'nty python',
-    hint: '"Always look on the bright side of life…" (two words)',
-    depth: 2,
-    dependsOn: ['urine']
+    id: 'app',
+    answer: 'app',
+    hint: 'Mo + BILE = mobile. What single word fills Mo___? Think smartphone software.',
+    deps: ['chart', 'liver', 'bile'],
+    getClue: () => isSolved('bile')
+      ? 'Mo_____ — bile is a Computer Program (smartphone download)'
+      : 'Mo_____ — [yellow-green liver fluid] Computer Program'
+  },
+
+  // ── Chain 2 ──
+  {
+    id: 'austral',
+    answer: 'austral',
+    hint: 'Adelaide\'s oldest hotel (1858) — named after the continent minus its last 2 letters.',
+    deps: [],
+    getClue: () => "Historic Adelaide hotel (opened 1858, now apartments)"
   },
   {
-    id: 'hilton',
-    clue: 'Hotel in Adelaide',
-    answer: 'hilton',
-    hint: 'A global luxury hotel chain — also a famous surname.',
-    depth: 1,
-    dependsOn: []
+    id: 'day',
+    answer: 'day',
+    hint: 'Australia = Austral + ia. Columbus ___. Mothers ___. Same word completes all three.',
+    deps: ['austral'],
+    getClue: () => isSolved('austral')
+      ? displayVal('austral') + 'ia, Columbus ___, Mothers ___ — complete each'
+      : '[Historic Adelaide hotel]ia, Columbus ___, Mothers ___ — complete each'
   },
-  {
-    id: 'moth',
-    clue: 'Lepidoptera, familiarly (singular)',
-    answer: 'moth',
-    hint: 'Butterflies and ___s — the night-flying variety.',
-    depth: 1,
-    dependsOn: []
-  },
+
+  // ── Chain 3 ──
   {
     id: 'miss',
-    clue: 'Driving ____ Daisy',
     answer: 'miss',
-    hint: '"Driving ___ Daisy" — the 1989 film.',
-    depth: 1,
-    dependsOn: []
+    hint: '"Driving ___ Daisy" — the 1989 Oscar-winning film with Morgan Freeman.',
+    deps: [],
+    getClue: () => 'Driving ____ Daisy'
   },
   {
-    id: 'lbw',
-    clue: () => clues.find(c=>c.id==='miss').solved
-      ? '___ before wicket: disMiss-al in cricket'
-      : '___ before wicket: dis[Driving ____ Daisy]al in cricket',
+    id: 'leg',
     answer: 'leg',
-    hint: 'Three-letter cricket dismissal abbreviation — think L.B.W.',
-    depth: 2,
-    dependsOn: ['miss']
+    hint: 'LBW stands for ___ Before Wicket. The limb between hip and foot.',
+    deps: ['miss'],
+    getClue: () => isSolved('miss')
+      ? '___ Before Wicket: dis' + displayVal('miss') + '-al in cricket'
+      : '___ Before Wicket: dis[Driving ____ Daisy]al in cricket'
   },
   {
-    id: 'plumes',
-    clue: () => clues.find(c=>c.id==='lbw').solved
-      ? 'Leg before wicket → dis_Miss_al → ___umes (feathery things)'
-      : '[___ before wicket: dis[Driving ____ Daisy]al in cricket]umes',
-    answer: 'pl',
-    hint: 'LBW = "dis_miss_al" → the word is "_umes". What two letters precede "umes" to make a word for feathers?',
-    depth: 3,
-    dependsOn: ['miss', 'lbw']
+    id: 'beans',
+    answer: 'beans',
+    hint: 'LEG + UME = LEGUME. A legume produces these — think baked ___ on toast.',
+    deps: ['miss', 'leg'],
+    getClue: () => isSolved('leg')
+      ? displayVal('leg') + 'ume — leguminous plant / its edible seeds'
+      : '[___ Before Wicket: disMissal in cricket]ume — leguminous plant / its edible seeds'
   }
 ];
 
-// State
+// ── State ────────────────────────────────────────────────────────
+const solvedMap = {};  // id -> display string
 let selectedId = null;
 let mistakes = 0;
 
-function getClueText(c) {
-  return typeof c.clue === 'function' ? c.clue() : c.clue;
+function isSolved(id) { return id in solvedMap; }
+function displayVal(id) { return solvedMap[id] || ''; }
+
+function markSolved(id, raw) {
+  solvedMap[id] = raw.charAt(0).toUpperCase() + raw.slice(1);
 }
 
-// ─────────────────────────────────────────────────
-// RENDER
-// ─────────────────────────────────────────────────
-function buildPuzzleHTML() {
-  // We'll represent the string as segments with solved/unsolved markers
-  // Start with the raw token tree and render outward
+function getClue(id) {
+  return CLUES.find(c => c.id === id).getClue();
+}
 
-  // Helper: wrap a clue span
-  function bracketSpan(id, innerHTML) {
-    const c = clues.find(x=>x.id===id);
-    if (c.solved) {
-      return `<span class="solved-text">${c.solvedValue}</span>`;
-    }
-    const sel = selectedId === id ? ' selected' : '';
-    const dep = c.dependsOn.filter(d => !clues.find(x=>x.id===d).solved);
-    const locked = dep.length > 0;
-    const lockIcon = locked ? '🔒' : '';
-    return `<span class="clue-bracket${sel}" data-id="${id}" title="${locked ? 'Solve inner brackets first' : 'Click to solve'}">${lockIcon}[${innerHTML}]</span>`;
+// ── Rendering ────────────────────────────────────────────────────
+function makeSpan(id, innerHTML) {
+  if (isSolved(id)) {
+    return '<span class="solved-text">' + displayVal(id) + '</span>';
   }
+  const c = CLUES.find(x => x.id === id);
+  const locked = c.deps.some(d => !isSolved(d));
+  const cls = 'clue-bracket' + (selectedId === id ? ' selected' : '') + (locked ? ' locked' : '');
+  const title = locked ? 'Solve inner brackets first' : 'Click to answer this clue';
+  return '<span class="' + cls + '" data-id="' + id + '" title="' + title + '">'
+    + (locked ? '🔒' : '') + '[' + innerHTML + ']</span>';
+}
 
-  // Build from inside out using nested rendering
-  // chart
-  const chartSpan = bracketSpan('chart', 'Type of chart');
+function buildHTML() {
+  // Chain 1 — H[app]y
+  const chartSpan = makeSpan('chart', 'Type of chart');
 
-  // oliver — depends on chart
-  const oliverInner = clues.find(c=>c.id==='chart').solved
-    ? 'O____! — Play by Lionel Bart'
-    : `O____! — Play by Lionel ${chartSpan}t`;
-  const oliverSpan = bracketSpan('oliver', oliverInner);
+  const liverContent = isSolved('chart')
+    ? 'O____! — Musical by Lionel Bart'
+    : 'O____! — Musical by Lionel ' + chartSpan + 't';
+  const liverSpan = makeSpan('liver', liverContent);
 
-  // urine — depends on oliver (and chart)
-  const urineInner = clues.find(c=>c.id==='oliver').solved
-    ? 'yellow fluid produced by the body'
-    : `yellow fluid produced by the body — ${oliverSpan}`;
-  const urineSpan = bracketSpan('urine', urineInner);
+  const bileContent = isSolved('liver')
+    ? 'Yellow-green digestive fluid produced by the liver'
+    : 'Yellow-green digestive fluid produced by the ' + liverSpan;
+  const bileSpan = makeSpan('bile', bileContent);
 
-  // python — depends on urine
-  const pythonInner = clues.find(c=>c.id==='urine').solved
-    ? 'Mo___ — urine is a Computer Program'
-    : `Mo___ — ${urineSpan} Computer Program`;
-  const pythonSpan = bracketSpan('python', pythonInner);
+  const appContent = isSolved('bile')
+    ? 'Mo_____ — bile is a Computer Program'
+    : 'Mo_____ — ' + bileSpan + ' Computer Program';
+  const appSpan = makeSpan('app', appContent);
 
-  // hilton
-  const hiltonSpan = bracketSpan('hilton', 'Hotel in Adelaide');
+  // Chain 2 — Birth[day]
+  const australSpan = makeSpan('austral', 'Historic Adelaide hotel');
 
-  // moth
-  const mothSpan = bracketSpan('moth', 'Lepidoptera, familiarly');
+  const dayContent = isSolved('austral')
+    ? displayVal('austral') + 'ia, Columbus, Mothers'
+    : australSpan + 'ia, Columbus, Mothers';
+  const daySpan = makeSpan('day', dayContent);
 
-  // miss
-  const missSpan = bracketSpan('miss', 'Driving ____ Daisy');
+  // Chain 3 — [beans]
+  const missSpan = makeSpan('miss', 'Driving ____ Daisy');
 
-  // lbw — depends on miss
-  const lbwInner = clues.find(c=>c.id==='miss').solved
-    ? '___ before wicket: disMiss-al in cricket'
-    : `___ before wicket: dis${missSpan}al in cricket`;
-  const lbwSpan = bracketSpan('lbw', lbwInner);
+  const legContent = isSolved('miss')
+    ? '___ Before Wicket: dis' + displayVal('miss') + '-al in cricket'
+    : '___ Before Wicket: dis' + missSpan + 'al in cricket';
+  const legSpan = makeSpan('leg', legContent);
 
-  // plumes — depends on lbw
-  const plumesInner = clues.find(c=>c.id==='lbw').solved
-    ? `Pl___ — leg before wicket → dis_Miss_al in cricket`
-    : `${lbwSpan}ume`;
-  const plumesSpan = bracketSpan('plumes', plumesInner);
+  const beansContent = isSolved('leg')
+    ? displayVal('leg') + 'ume — leguminous plant / edible seeds'
+    : legSpan + 'ume — leguminous plant / edible seeds';
+  const beansSpan = makeSpan('beans', beansContent);
 
-  // Assemble final string
-  // H[Mo[urine Computer Program]y Birth[[hilton]ia, Columbus, [moth]ers] [[lbw]ume]s!!
-  // = Happy Birthday, Columbus, Mothers!! + [Plumes]
-  // Full decoded: "Happy Birthday, Columbus, Mothers! Plumes!!"
-
-  const hSolved = clues.find(c=>c.id==='python').solved;
-  const H = `H`;
-  const moBlock = pythonSpan;
-
-  const birthBlock = `y Birth`;
-  const hiltonBlock = hiltonSpan;
-  const mothBlock = mothSpan;
-  const plumesBlock = plumesSpan;
-
-  return `${H}${moBlock}${birthBlock}[${hiltonBlock}ia, Columbus, ${mothBlock}ers] [${plumesBlock}s]!!`;
+  return 'H' + appSpan + 'y Birth' + daySpan + ' ' + beansSpan + '!!';
 }
 
 function render() {
-  document.getElementById('puzzleDisplay').innerHTML = buildPuzzleHTML();
+  document.getElementById('puzzleDisplay').innerHTML = buildHTML();
 
-  // Attach click events
   document.querySelectorAll('.clue-bracket').forEach(el => {
     el.addEventListener('click', () => {
       const id = el.dataset.id;
-      const c = clues.find(x=>x.id===id);
-      if (c.solved) return;
-      const locked = c.dependsOn.some(d => !clues.find(x=>x.id===d).solved);
-      if (locked) {
-        showFeedback('Solve the inner brackets first! 🔒', 'wrong');
+      if (isSolved(id)) return;
+      const c = CLUES.find(x => x.id === id);
+      if (c.deps.some(d => !isSolved(d))) {
+        showFeedback('🔒 Solve the inner brackets first!', 'wrong');
         return;
       }
-      selectClue(id);
+      openClue(id);
     });
   });
 
-  // Progress
-  const total = clues.length;
-  const solved = clues.filter(c=>c.solved).length;
-  document.getElementById('progressFill').style.width = (solved/total*100)+'%';
-  document.getElementById('solvedCount').textContent = `${solved} / ${total} solved`;
-  document.getElementById('mistakesCount').textContent = `${mistakes} mistake${mistakes!==1?'s':''}`;
+  const total = CLUES.length;
+  const done = Object.keys(solvedMap).length;
+  document.getElementById('progressFill').style.width = (done / total * 100) + '%';
+  document.getElementById('solvedCount').textContent = done + ' / ' + total + ' solved';
+  document.getElementById('mistakesCount').textContent = mistakes + ' mistake' + (mistakes !== 1 ? 's' : '');
 
-  // Check victory
-  if (solved === total) {
+  if (done === total) {
     document.getElementById('answerPanel').classList.remove('visible');
     document.getElementById('victory').classList.add('show');
-    document.getElementById('finalMessage').textContent = buildFinalString();
   }
 }
 
-function buildFinalString() {
-  // The fully solved string
-  const py = clues.find(c=>c.id==='python').solvedValue || 'nty Python';
-  const hilton = clues.find(c=>c.id==='hilton').solvedValue || 'Hilton';
-  const moth = clues.find(c=>c.id==='moth').solvedValue || 'Moth';
-  const pl = clues.find(c=>c.id==='plumes').solvedValue || 'Pl';
-  return `Happy Birthday, ${hilton}ia, Columbus, ${moth}ers [${pl}umes]!!`;
-}
-
-function selectClue(id) {
+function openClue(id) {
   selectedId = id;
-  const c = clues.find(x=>x.id===id);
-  const panel = document.getElementById('answerPanel');
-  panel.classList.add('visible');
-
-  const label = document.getElementById('clueLabel');
-  const depUnmet = c.dependsOn.filter(d=>!clues.find(x=>x.id===d).solved);
-  label.innerHTML = `<strong>Clue:</strong> ${getClueText(c)}`;
-
+  const c = CLUES.find(x => x.id === id);
+  document.getElementById('answerPanel').classList.add('visible');
+  document.getElementById('clueLabel').innerHTML = '<strong>Clue:</strong> ' + c.getClue();
   document.getElementById('answerInput').value = '';
   document.getElementById('feedback').textContent = '';
   document.getElementById('feedback').className = 'feedback';
   document.getElementById('hintText').className = 'hint-text';
   document.getElementById('hintToggle').textContent = 'Hint?';
-
-  const hintText = document.getElementById('hintText');
-  hintText.textContent = c.hint || '(no hint available)';
-
+  document.getElementById('hintText').textContent = c.hint;
   document.getElementById('answerInput').focus();
   render();
+}
+
+function showFeedback(msg, type) {
+  const fb = document.getElementById('feedback');
+  fb.textContent = msg;
+  fb.className = 'feedback ' + type;
+}
+
+function checkAnswer() {
+  if (!selectedId) return;
+  const c = CLUES.find(x => x.id === selectedId);
+  const input = document.getElementById('answerInput').value.trim().toLowerCase();
+
+  if (input === c.answer.toLowerCase()) {
+    markSolved(selectedId, c.answer);
+    showFeedback('✓ Correct!', 'right');
+    selectedId = null;
+    setTimeout(() => {
+      document.getElementById('answerPanel').classList.remove('visible');
+      document.getElementById('feedback').textContent = '';
+      render();
+    }, 700);
+  } else {
+    mistakes++;
+    showFeedback('✗ Not quite — try again!', 'wrong');
+    const inp = document.getElementById('answerInput');
+    inp.style.borderColor = 'var(--red)';
+    setTimeout(() => { inp.style.borderColor = ''; }, 600);
+    render();
+  }
 }
 
 document.getElementById('hintToggle').addEventListener('click', () => {
@@ -594,44 +371,11 @@ document.getElementById('hintToggle').addEventListener('click', () => {
   btn.textContent = show ? 'Hide' : 'Hint?';
 });
 
-function showFeedback(msg, type) {
-  const fb = document.getElementById('feedback');
-  fb.textContent = msg;
-  fb.className = 'feedback ' + type;
-}
-
-function checkAnswer() {
-  if (!selectedId) return;
-  const c = clues.find(x=>x.id===selectedId);
-  const input = document.getElementById('answerInput').value.trim().toLowerCase();
-
-  if (input === c.answer.toLowerCase()) {
-    c.solved = true;
-    // Capitalise properly for display
-    c.solvedValue = c.answer.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
-    showFeedback('✓ Correct!', 'right');
-    selectedId = null;
-    setTimeout(() => {
-      document.getElementById('answerPanel').classList.remove('visible');
-      document.getElementById('feedback').textContent = '';
-      render();
-    }, 800);
-  } else {
-    mistakes++;
-    showFeedback('✗ Not quite — try again!', 'wrong');
-    const input_el = document.getElementById('answerInput');
-    input_el.style.borderColor = 'var(--red)';
-    setTimeout(()=>{ input_el.style.borderColor = ''; }, 600);
-    render();
-  }
-}
-
 document.getElementById('submitBtn').addEventListener('click', checkAnswer);
 document.getElementById('answerInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') checkAnswer();
 });
 
-// Init
 render();
 </script>
 </body>
